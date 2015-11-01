@@ -1,7 +1,11 @@
 var EchoServer = {}
 
 EchoServer.test = function(){
-  console.log("Hello, World!");
+  console.log("Hello, World! - EchoServer Test - The module is loaded fine!");
+}
+
+EchoServer.usage = function(){
+  console.log("node index.js <port>");
 }
 
 EchoServer.start = function(port){
@@ -10,7 +14,7 @@ EchoServer.start = function(port){
 
   server.on('connection', function(c){
     //console.log('connected');
-    
+
     console.log("Client connected");
     c.write("\nWelcome to the Echo Server\n\n");
 
@@ -24,9 +28,25 @@ EchoServer.start = function(port){
     });
   });
 
-  server.listen(port||'5432',function(){
-    console.log("Echo started, listening for connections...\n");
+  server.listen(port||5432, function(){
+    console.log("Echo started, listening for connections on %s...\n", server.address().port );
   });
+
+  server.on('error', function (e) {
+
+    if (e.code == 'EADDRINUSE') {
+      console.log('Address in use, retrying...');
+      setTimeout(function () {
+        server.close();
+        server.listen(port);
+      }, 1000);
+    }else if (e.code = 'EACCESS') {
+      console.log("Unable to use the port, please change..")
+    }
+
+    //console.log(e);
+  });
+
 
 }
 

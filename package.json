@@ -1,0 +1,21 @@
+{
+  "name": "EchoServer",
+  "version": "0.0.2",
+  "description": "A simple echo server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/manuraj17/EchoServer.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "Manu Raj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manuraj17/EchoServer/issues"
+  }
+}
