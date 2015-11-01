@@ -4,8 +4,8 @@ EchoServer.test = function(){
   console.log("Hello, World! - EchoServer Test - The module is loaded fine!");
 }
 
-EchoServer.usage = function(){
-  console.log("node index.js <port>");
+EchoServer.help = function(){
+  console.log("EchoServer start <port> [default port: 5432]");
 }
 
 EchoServer.start = function(port){
@@ -28,7 +28,7 @@ EchoServer.start = function(port){
     });
   });
 
-  server.listen(port||5432, function(){
+  server.listen(port, function(){
     console.log("Echo started, listening for connections on %s...\n", server.address().port );
   });
 
